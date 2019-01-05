@@ -5,9 +5,9 @@ class Quakes {
 
     private double mMagnidtude;
     private String mLocation;
-    private String mEventDate;
+    private long mEventDate;
 
-    public Quakes (double magnidtude, String location, String eventDate){
+    public Quakes (double magnidtude, String location, long eventDate){
 
         mMagnidtude = magnidtude;
         mLocation = location;
@@ -37,7 +37,7 @@ class Quakes {
      * Get the MMMM/DD/YYYY
      * @return String default word
      */
-    public String getmEventDate() {
+    public long getmEventDate() {
         return mEventDate;
     }
 }

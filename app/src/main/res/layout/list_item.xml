@@ -21,9 +21,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/magnitude_textview"
-        tools:text="San Fransisco"
+        android:layout_toLeftOf="@id/event_date_textview"
+        tools:text="156KM N of San Fransisco and more text"
         android:padding="11dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:scrollHorizontally="false"
+        android:inputType="textMultiLine"
+        android:maxLines="2"
+
+        />
 
     <TextView
         android:id="@+id/event_date_textview"

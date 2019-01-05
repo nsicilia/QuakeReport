@@ -43,7 +43,7 @@ public class QuakeAdapter extends ArrayAdapter<Quakes> {
 
 
         TextView eventDateTextView = listItemView.findViewById(R.id.event_date_textview);
-        eventDateTextView.setText(currentQuake.getmEventDate());
+        eventDateTextView.setText(String.valueOf(currentQuake.getmEventDate()));
 
 
 
