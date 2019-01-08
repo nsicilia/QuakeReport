@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,12 +38,18 @@ public class QuakeAdapter extends ArrayAdapter<Quakes> {
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateOjbect = new Date(currentQuake.getmEventDate());
 
+        //Formats the the data to a single decimal point
+        DecimalFormat decimalFormat = new DecimalFormat("0.0");
+        //Takes the input data, a double, from the quake class and formats it and
+        //converts it to a string
+        String decimalOutput = decimalFormat.format(currentQuake.getmMagnidtude());
+
 
         // Find the TextView in the list_item.xml layout with the ID magnitude_textview
         TextView magnitudeTextView = listItemView.findViewById(R.id.magnitude_textview);
         // Get the version name from the current Quakes object and
         // set this text on the name TextView
-        magnitudeTextView.setText(String.valueOf(currentQuake.getmMagnidtude()));
+        magnitudeTextView.setText(String.valueOf(decimalOutput));
 
 
         String originalLocation = currentQuake.getmLocation();
