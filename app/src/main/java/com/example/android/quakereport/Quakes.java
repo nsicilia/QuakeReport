@@ -6,13 +6,18 @@ class Quakes {
     private double mMagnidtude;
     private String mLocation;
     private long mEventDate;
+    private String mURL;
 
-    public Quakes (double magnidtude, String location, long eventDate){
+
+    public Quakes (double magnidtude, String location, long eventDate, String url){
 
         mMagnidtude = magnidtude;
         mLocation = location;
         mEventDate = eventDate;
+        mURL = url;
     }
+
+
 
 
     /**
@@ -40,4 +45,14 @@ class Quakes {
     public long getmEventDate() {
         return mEventDate;
     }
+
+    /**
+     * Get the web adress
+     * @return String url
+     */
+    public String getmURL() {
+        return mURL;
+    }
 }
+
+

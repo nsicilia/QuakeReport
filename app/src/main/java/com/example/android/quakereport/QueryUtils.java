@@ -82,8 +82,10 @@ public final class QueryUtils {
                 //Pulls the time info in miliseconds from the "time" tag
                 long timeItem = list.getLong("time");
 
+                String quakeurl = list.getString("url");
+
                 //Adds data to the Arraylist<Quakes>
-                earthquakes.add(new Quakes(magItem,locationItem,timeItem));
+                earthquakes.add(new Quakes(magItem,locationItem,timeItem,quakeurl));
 
             }
 

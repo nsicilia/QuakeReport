@@ -1,7 +1,6 @@
 package com.example.android.quakereport;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,8 +33,9 @@ public class QuakeAdapter extends ArrayAdapter<Quakes> {
                     R.layout.list_item, parent, false);
         }
 
+
         // Get the {@link Quakes} object located at this position in the list
-        Quakes currentQuake = getItem(position);
+        final Quakes currentQuake = getItem(position);
 
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateOjbect = new Date(currentQuake.getmEventDate());
