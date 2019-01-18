@@ -15,9 +15,10 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class QuakeAdapter extends ArrayAdapter<Quakes> {
-    public QuakeAdapter(Activity context, ArrayList<Quakes> quakes) {
+    public QuakeAdapter(Activity context, List<Quakes> quakes) {
         super(context,0, quakes);
     }
 

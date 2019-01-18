@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
@@ -34,7 +35,7 @@ public class EarthquakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        ArrayList<Quakes> quakes = QueryUtils.extractEarthquakes();
+        List<Quakes> quakes = QueryUtils.extractEarthquakes();
 
 
 
@@ -67,4 +68,6 @@ public class EarthquakeActivity extends AppCompatActivity {
 
 
     }
+
+
 }
