@@ -16,17 +16,17 @@
 package com.example.android.quakereport;
 
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.content.AsyncTaskLoader;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +35,9 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
     private static final int EARTHQUAKE_LOADER_ID = 1;
+
+    /** TextView that is displayed when the list is empty */
+    private TextView mEmptyStateTextView;
 
     /**
      * Adapter for the list of earthquakes
@@ -53,16 +56,16 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // Find a reference to the {@link ListView} in the layout
         ListView listView = findViewById(R.id.list);
 
+        mEmptyStateTextView = findViewById(R.id.empty_list);
+        listView.setEmptyView(mEmptyStateTextView);
+
+
         // Create a new adapter that takes an empty list of earthquakes as input
         mAdapter = new QuakeAdapter(this, new ArrayList<Quakes>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         listView.setAdapter(mAdapter);
-
-        // Start the AsyncTask to fetch the earthquake data
-//        EarthquakeAsyncTask task = new EarthquakeAsyncTask();
-//        task.execute(USGS_REQUEST_URL);
 
 
         // Get a reference to the LoaderManager, in order to interact with loaders.
@@ -71,7 +74,6 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // Initialize the loader. Pass in the int ID constant defined above and pass in null for
         // the bundle. Pass in this activity for the LoaderCallbacks parameter
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID,null,EarthquakeActivity.this);
-
 
 
 
@@ -112,8 +114,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty()) {
-            mAdapter.addAll(data);
+            //mAdapter.addAll(data);
         }
+        // Set empty state text to display "No earthquakes found."
+        mEmptyStateTextView.setBackgroundColor(Color.parseColor("#ce93d8"));
+        mEmptyStateTextView.setText(R.string.no_earthquakes);
+
+
     }
 
     @Override
