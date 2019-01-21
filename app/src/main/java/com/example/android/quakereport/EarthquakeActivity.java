@@ -25,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,8 +45,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
      */
     private QuakeAdapter mAdapter;
 
-    private static final String USGS_REQUEST_URL =
-            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
+    private static final String USGS_REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=15";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,16 +108,24 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     @Override
     public void onLoadFinished(Loader<List<Quakes>> loader, List<Quakes> data) {
 
+        ProgressBar spinner = findViewById(R.id.loading_spinner);
+
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
 
         // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty()) {
-            //mAdapter.addAll(data);
+            //Sets the loading spinner to invisible
+            spinner.setVisibility(View.GONE);
+            mAdapter.addAll(data);
         }
-        // Set empty state text to display "No earthquakes found."
+        //Sets the loading spinner to invisible
+        spinner.setVisibility(View.GONE);
+
+        //Sets view background to a light purple color
         mEmptyStateTextView.setBackgroundColor(Color.parseColor("#ce93d8"));
+        // Set empty state text to display "No earthquakes found."
         mEmptyStateTextView.setText(R.string.no_earthquakes);
 
 
